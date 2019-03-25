@@ -9,6 +9,7 @@
 namespace Korean\Holiday\Property;
 
 use Carbon\Carbon;
+use Carbon\CarbonInterface;
 
 /**
  * Class HolidayInfo
@@ -51,7 +52,7 @@ class HolidayInfo
     }
 
     /**
-     * @return Carbon|\Carbon\CarbonInterface
+     * @return Carbon|CarbonInterface
      */
     public function getCarbon()
     {
