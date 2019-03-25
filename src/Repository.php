@@ -22,17 +22,6 @@ class Repository
     }
 
     /**
-     * @param string $date
-     */
-    private function setDate(string $date = null)
-    {
-        if ($date !== null) {
-            $date = strtotime($date);
-            $this->date = Carbon::createFromTimestamp($date)->toDateString();
-        }
-    }
-
-    /**
      * @param string|null $date
      * @return bool
      * @throws NotFoundYearDataException
@@ -42,7 +31,18 @@ class Repository
         $this->setDate($date);
         $this->getHolidayForYear($this->date->year);
 
-        return array_key_exists($this->date, $this->holidays) ? true : false;
+        return array_key_exists($this->date->format('Y-m-d'), $this->holidays[$this->date->year]) ? true : false;
+    }
+
+    /**
+     * @param string $date
+     */
+    private function setDate(string $date = null)
+    {
+        if ($date !== null) {
+            $date = strtotime($date);
+            $this->date = Carbon::createFromTimestamp($date);
+        }
     }
 
     /**
@@ -52,7 +52,7 @@ class Repository
      */
     public function getHoliday(string $date = null)
     {
-        return $this->isHoliday($date) ? $this->holidays[$this->date->year] : null;
+        return $this->isHoliday($date) ? $this->holidays[$this->date->year][$this->date->format('Y-m-d')] : null;
     }
 
     /**
@@ -73,7 +73,6 @@ class Repository
      */
     private function storeHolidayForYear(int $year = null)
     {
-
         if ($year === null) {
             $year = $this->date->year;
         } else {
@@ -90,9 +89,5 @@ class Repository
         foreach ($holidays as $date => $row) {
             $this->holidays[$year][$date] = new HolidayInfo($date, $row['name']);
         }
-    }
-
-    private function setBasedDateForYear(int $year = null)
-    {
     }
 }
