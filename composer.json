@@ -2,8 +2,8 @@
     "name": "natz92/korean-holiday",
     "description": "Korean Holiday with PHP",
     "type": "library",
-    "license": "MIT License",
-    "version": "0.0.1",
+    "license": "MIT",
+    "version": "0.1.0",
     "authors": [
         {
             "name": "natz92",
