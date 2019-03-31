@@ -12,5 +12,5 @@ namespace Korean\Holiday\Exceptions;
 class NotFoundYearDataException extends \Exception
 {
     protected $code = 404;
-    protected $message = "Not found this year. Supported 2019";
+    protected $message = "Not found this year. Supported 2015 ~ ";
 }
