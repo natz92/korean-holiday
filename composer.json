@@ -3,7 +3,6 @@
     "description": "Korean Holiday with PHP",
     "type": "library",
     "license": "MIT",
-    "version": "0.1.0",
     "authors": [
         {
             "name": "natz92",
