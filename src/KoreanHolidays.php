@@ -7,7 +7,7 @@ use Korean\Holiday\Exceptions\NotFoundYearDataException;
 use Korean\Holiday\Property\HolidayInfo;
 use Symfony\Component\Yaml\Yaml;
 
-class Repository
+class KoreanHolidays
 {
     private $date;
     private $holidays;
